@@ -9,4 +9,19 @@ const messageConfig = {
       "Thor",
       "Loki"
   ]
+  
 };
+ 
+const printCard = function () {
+  console.log(this.frontContent);
+  console.log(this.insideContent);
+
+  const outerContext = this;
+
+  this.signatories.forEach(function (signatory) {
+    const message = `${outerContext.closing[signatory]}, ${signatory}`;
+    console.log(message);
+  });
+};
+
+printCard.call(messageConfig);
